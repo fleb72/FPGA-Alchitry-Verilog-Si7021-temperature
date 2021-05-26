@@ -1,0 +1,3 @@
+// I2C Serial Clock (scl) & Serial Data (sda)
+pin scl A24;
+pin sda A23;
