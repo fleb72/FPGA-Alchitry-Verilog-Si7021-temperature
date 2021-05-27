@@ -45,6 +45,6 @@
 
  ## Description en Verilog
  
- - dans les sources, le fichier du module principal *au_top.v* s'occuppe de la communication I2C : génération de la trame, récupération des données et calcul de la température. La gestion de la commmunication I2C est décrite à la façon d'une machine à états finis.
+ - dans les sources, le fichier du module principal *au_top.v* s'occupe de la communication I2C : génération de la trame, récupération des données et calcul de la température. La gestion de la commmunication I2C est décrite à la façon d'une machine à états finis.
  - le fichier du module *serialTemperatureDisplay.v* gère la communication série UART Tx pour rendre compte dans un terminal série.
 
