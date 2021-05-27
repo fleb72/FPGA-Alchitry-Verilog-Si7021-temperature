@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="FPGA-Alchitry-Verilog-Si7021-temperature" board="Alchitry Au" language="Verilog" version="3">
   <files>
-    <component>uart_tx.luc</component>
     <src top="true">au_top.v</src>
+    <component>uart_tx.luc</component>
     <component>i2c_controller.luc</component>
-    <src>serialTemperatureDisplay.v</src>
     <component>reset_conditioner.luc</component>
-    <constraint lib="true">alchitry.acf</constraint>
+    <src>serialTemperatureDisplay.v</src>
     <constraint>io.acf</constraint>
+    <constraint lib="true">alchitry.acf</constraint>
     <constraint lib="true">au.xdc</constraint>
   </files>
 </project>
