@@ -2,4 +2,4 @@
 
 ## Verilog driver for the si7021 temperature sensor
 
-![Alchitry Au + Adafruit Si7021 module](images/20210526_185742.jpg)
+![Alchitry Au + Adafruit Si7021 module](images/20210526_185742.jpg =500x)
