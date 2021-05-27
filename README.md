@@ -22,30 +22,26 @@
  ## Fonctionnement du système et analyse des trames I2C
  
  - une acquisition de température est effectuée chaque seconde :
-![trame1](images/trame1.PNG)
+ ![trame1](images/trame1.PNG)
  
  - au démarrage de la carte, ou après appui sur le bouton *reset* de la carte, la commande *reset* (0xFE) est envoyée :
-![trame2](images/trame2.PNG)
+ ![trame2](images/trame2.PNG)
 
 - l'acquisition de température prend 8 ms (entre les repères 0 et 1) :
-![trame3](images/trame3.PNG)
+ ![trame3](images/trame3.PNG)
  
  - une acquisition de température débute avec l'envoi de la commande 0xF3 (*Measure Temperature, No Hold Master Mode*) :
-![trame4](images/trame4.PNG)
+ ![trame4](images/trame4.PNG)
 
 - toutes les 2 ms, on regarde si la conversion est terminée. Tant que la donnée de température n'est pas disponible, le module Si7021 refuse d'acquitter (*NAK*) :
+ ![trame5](images/trame5.PNG)
 
-![trame5](images/trame5.PNG)
-
-- 8 ms après le début de l'acquisition, le module Si7021 acquitte enfin (*ACK*). Il reste à récupérer les trois octets de données :
-
-| poids fort MSB | poids faible LSB | ChkSum |
-
-![trame6](images/trame6.PNG)
+- 8 ms après le début de l'acquisition, le module Si7021 acquitte enfin (*ACK*). Il reste à récupérer les trois octets de données - poids fort MSB, poids faible LSB, ChkSum - :
+ ![trame6](images/trame6.PNG)
 Ici, MSB=0x66 et LSB=0x10. D'après la formule de la *datasheet*, il fait 23,2 °C.
 
 - La température peut être affichée directement en °C dans un terminal série (115 200 bauds, 8N1), ici *RealTerm* :
-![realterm-capture](images/realterm-capture.PNG)
+ ![realterm-capture](images/realterm-capture.PNG)
 
 
 
