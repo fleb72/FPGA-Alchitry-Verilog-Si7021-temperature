@@ -33,15 +33,18 @@
  - une acquisition de température débute avec l'envoi de la commande 0xF3 (*Measure Temperature, No Hold Master Mode*) :
  ![trame4](images/trame4.PNG)
 
-- toutes les 2 ms, on regarde si la conversion est terminée. Tant que la donnée de température n'est pas disponible, le module Si7021 refuse d'acquitter (*NAK*) :
+ - toutes les 2 ms, on regarde si la conversion est terminée. Tant que la donnée de température n'est pas disponible dans ses registres, le module Si7021 refuse d'acquitter (*NAK*) :
  ![trame5](images/trame5.PNG)
 
-- 8 ms après le début de l'acquisition, le module Si7021 acquitte enfin (*ACK*). Il reste à récupérer les trois octets de données - poids fort MSB, poids faible LSB, ChkSum - :
+ - 8 ms après le lancement de l'acquisition et donc après plusieurs tentatives, le module Si7021 acquitte enfin (*ACK*). Il reste à récupérer les trois octets de données qui s'ensuivent- poids fort MSB, poids faible LSB et ChkSum - :
  ![trame6](images/trame6.PNG)
-Ici, MSB=0x66 et LSB=0x10. D'après la formule de la *datasheet*, il fait 23,2 °C.
+ Ici, MSB=0x66 et LSB=0x10. D'après la formule de la *datasheet* du Si7021, il fait 23,2 °C.
 
 - La température peut être affichée directement en °C dans un terminal série (115 200 bauds, 8N1), ici *RealTerm* :
  ![realterm-capture](images/realterm-capture.PNG)
 
-
+ ## Description en Verilog
+ 
+ - dans les sources, le fichier du module principal *au_top.v* s'occuppe de la communication I2C : génération de la trame, récupération des données et calcul de la température. La gestion de la commmunication I2C est décrite à la façon d'une machine à états finis.
+ - le fichier du module *serialTemperatureDisplay.v* gère la communication série UART Tx pour rendre compte dans un terminal série.
 
