@@ -34,10 +34,13 @@
 ![trame4](images/trame4.PNG)
 
 - toutes les 2 ms, on regarde si la conversion est terminée. Tant que la donnée de température n'est pas disponible, le module Si7021 refuse d'acquitter (*NAK*) :
+
 ![trame5](images/trame5.PNG)
 
 - 8 ms après le début de l'acquisition, le module Si7021 acquitte enfin (*ACK*). Il reste à récupérer les trois octets de données :
+
 | poids fort MSB | poids faible LSB | ChkSum |
+
 ![trame6](images/trame6.PNG)
 Ici, MSB=0x66 et LSB=0x10. D'après la formule de la *datasheet*, il fait 23,2 °C.
 
