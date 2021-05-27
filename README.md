@@ -41,7 +41,7 @@
 ![trame6](images/trame6.PNG)
 Ici, MSB=0x66 et LSB=0x10. D'après la formule de la *datasheet*, il fait 23,2 °C.
 
-- La température peut être affichée directement en °C dans un terminal série (115200 bauds, 8N1), ici *RealTerm* :
+- La température peut être affichée directement en °C dans un terminal série (115 200 bauds, 8N1), ici *RealTerm* :
 ![realterm-capture](images/realterm-capture.PNG)
 
 
